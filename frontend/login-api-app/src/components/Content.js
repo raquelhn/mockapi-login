@@ -1,9 +1,10 @@
 import React from 'react';
-import { removeUserSession} from '../utils/Common';
+import {getUser, removeUserSession} from '../utils/Common';
 
  
 function Content(props) {
  
+  const user = getUser();
   // handle click event of logout button
   const handleLogout = () => {
     removeUserSession();
@@ -12,7 +13,7 @@ function Content(props) {
  
   return (
     <div>
-      Welcome User!<br /><br />
+      Welcome {user.name}!<br /><br />
       <input type="button" onClick={handleLogout} value="Logout" />
     </div>
   );

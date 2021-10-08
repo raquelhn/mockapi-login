@@ -37,12 +37,12 @@ function App() {
         <div>
           <div className="header">
             <NavLink activeClassName="active" to="/">Home</NavLink>
-            <NavLink activeClassName="active" to="/dashboard">Dashboard</NavLink><small>(Access with token only)</small>
+            <NavLink activeClassName="active" to="/content">Dashboard</NavLink>
           </div>
-          <div className="content">
+          <div>
             <Switch>
               <PublicRoute path="/" component={Login} />
-              <PrivateRoute path="/content" component={Content} />
+              <Route path="/content" component={Content} />
             </Switch>
           </div>
         </div>

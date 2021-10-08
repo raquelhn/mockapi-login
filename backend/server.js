@@ -1,8 +1,11 @@
+
+
 require('dotenv').config();
 
 var express = require('express');
 var cors = require('cors');
 var jwt = require('jsonwebtoken');
+var utils =require('./utils.js');
 
 var app = express();
 var port = process.env.PORT || 4000;
@@ -12,8 +15,42 @@ const userData = {
   password: "123456",
   name: "Clue Mediator",
   username: "raquelhn",
-  isAdmin: true
+  isAdmin: true,
+  policyData:{
+      "compulsory_excess": 100,
+      "voluntary_excess": 100,
+      "address": {
+        "line_1": "Flat 1, 11 The Street",
+        "line_2": "Little Hampton",
+        "line_3": "Burton-on-the-water",
+        "county": "Avon",
+        "city": "Stroud",
+        "country": "GB",
+        "postcode": "W53TR"
+      },
+      "usage": "SDP",
+      "cover": "Comprehensive",
+      "auto_renew": true,
+      "start_date": 1599567165,
+      "end_date": 1599567165,
+      "billing_day_date": 20,
+      "underwriter": "Zurich",
+      "underwriter_ref": "AXABM000001",
+      "product_name": "PBMYD",
+      "policy_year": 1,
+      "created_at": 1599567165,
+      "policy_ref": "apple-orange-pear"
+    },
+    "proposer": {
+      "title": "003",
+      "first_names": "Dave",
+      "last_names": "Jones",
+      "email": "dave@jones.com",
+      "mobile_number": "+447999000011",
+    }  
 };
+
+
 
 // enable CORS
 app.use(cors());
@@ -105,7 +142,7 @@ app.use(function (req, res, next) {
   });
    
   // request handlers
-  app.get('/', (req, res) => {
+  app.get('/content', (req, res) => {
     if (!req.user) return res.status(401).json({ success: false, message: 'Invalid user to access it.' });
     res.send('Welcome to the Node.js Tutorial! - ' + req.user.name);
   });

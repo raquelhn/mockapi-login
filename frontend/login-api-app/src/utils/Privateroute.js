@@ -1,15 +1,28 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { getToken } from './Common';
- 
-// handle the private routes
-function PrivateRoute({ component: Component, ...rest }) {
+import {
+  Route,
+  Redirect
+} from 'react-router-dom';
+
+function PrivateRoute({ children, isAuthenticated, ...rest }) {
   return (
     <Route
       {...rest}
-      render={(props) => getToken() ? <Component {...props} /> : <Redirect to={{ pathname: '/', state: { from: props.location } }} />}
+      render={
+        ({ location }) => (
+          isAuthenticated
+            ? (
+              children
+            ) : (
+              <Redirect
+                to={{
+                  pathname: '/login',
+                  state: { from: location }
+                }}
+              />
+            ))
+      }
     />
-  )
+  );
 }
- 
+
 export default PrivateRoute;

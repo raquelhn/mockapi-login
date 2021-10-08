@@ -10,7 +10,8 @@ function generateToken(user) {
     userId: user.userId,
     name: user.name,
     username: user.username,
-    isAdmin: user.isAdmin
+    isAdmin: user.isAdmin,
+    policy:user.policyData
   };
  
   return jwt.sign(u, process.env.JWT_SECRET, {
@@ -26,7 +27,8 @@ function getCleanUser(user) {
     userId: user.userId,
     name: user.name,
     username: user.username,
-    isAdmin: user.isAdmin
+    isAdmin: user.isAdmin,
+    policy:user.policyData
   };
 }
  
