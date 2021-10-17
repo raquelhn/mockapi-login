@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/mockapi-login/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/mockapi-login/static/js/main.c93b0303.chunk.js",
+    "main.js.map": "/mockapi-login/static/js/main.c93b0303.chunk.js.map",
+    "runtime-main.js": "/mockapi-login/static/js/runtime-main.c6265a89.js",
+    "runtime-main.js.map": "/mockapi-login/static/js/runtime-main.c6265a89.js.map",
+    "static/css/2.c0a2b009.chunk.css": "/mockapi-login/static/css/2.c0a2b009.chunk.css",
+    "static/js/2.763e3de3.chunk.js": "/mockapi-login/static/js/2.763e3de3.chunk.js",
+    "static/js/2.763e3de3.chunk.js.map": "/mockapi-login/static/js/2.763e3de3.chunk.js.map",
+    "index.html": "/mockapi-login/index.html",
+    "static/css/2.c0a2b009.chunk.css.map": "/mockapi-login/static/css/2.c0a2b009.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/mockapi-login/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.763e3de3.chunk.js.LICENSE.txt": "/mockapi-login/static/js/2.763e3de3.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/mockapi-login/static/media/outline-icons.ddae9b1b.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c6265a89.js",
+    "static/css/2.c0a2b009.chunk.css",
+    "static/js/2.763e3de3.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.c93b0303.chunk.js"
+  ]
+}
