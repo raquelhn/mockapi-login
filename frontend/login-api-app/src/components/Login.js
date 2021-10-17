@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { setUserSession } from '../utils/Common';
+import { Form, Container,Header } from 'semantic-ui-react'
 import axios from 'axios';
 
  
@@ -8,37 +9,50 @@ function Login(props) {
   const password = useFormInput('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [userToken, setUserToken] = useState("");
  
   // handle button click of login form
   const handleLogin = () => {
     setError(null);
     setLoading(true);
-    axios.post('http://localhost:4000/users/signin', { username: username.value, password: password.value }).then(response => {
-      setLoading(false);
+    axios.post('https://api.bybits.co.uk/auth/token', 
+    { username: username.value, password: password.value, type:"USER_PASSWORD_AUTH" },
+    {headers:
+      {environment: 'mock'}
+    }).then(response => {
       console.log(response)
-      setUserSession(response.data.token, response.data.user);
-      props.history.push('/content');
+      setLoading(false);
+      setUserSession(response.data.access_token, response.data);
+      console.log(response.data)
+      setUserToken(response.data.access_token);
+      //console.log(response.data.access_token);
+      //its sending the props to private
+      props.history.push('/private');
     }).catch(error => {
       setLoading(false);
-      if (error.response.status === 401) setError(error.response.data.message);
-      else setError("Something went wrong. Please try again later.");
+      setError("Something went wrong. Please try again later.");
     });
   }
  
   return (
-    <div>
-      Login<br /><br />
-      <div>
-        Username<br />
+    <>
+    <Header as='h2'>Login</Header>
+    <Form centered>
+      <Form.Field>
+        <label>Username</label>
         <input type="text" {...username} autoComplete="new-password" />
-      </div>
-      <div style={{ marginTop: 10 }}>
-        Password<br />
+      </Form.Field>
+      <Form.Field>
+        <label style={{ marginTop: 10 }}>
+        Password
+        </label>
         <input type="password" {...password} autoComplete="new-password" />
-      </div>
+      </Form.Field>
       {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
       <input type="button" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
-    </div>
+      
+    </Form>
+    </>
   );
 }
  
